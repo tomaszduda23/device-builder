@@ -1,0 +1,161 @@
+id: xiao_ble
+name: Seeed XIAO nRF52840
+description: Seeed XIAO nRF52840 (formerly XIAO BLE) is a thumb-sized nRF52840 board (21x17.5mm) with Bluetooth 5 / Thread,
+  2 MB QSPI flash, USB-C, RGB LED, and Li-ion battery charging. No Wi-Fi.
+manufacturer: Seeed Studio
+images:
+- https://files.seeedstudio.com/wiki/XIAO-BLE/nrf52840_front.jpg
+- https://files.seeedstudio.com/wiki/XIAO-BLE/XIAO_nRF52840_front_pinout.png
+- https://files.seeedstudio.com/wiki/XIAO-BLE/XIAO_nRF52840_back_pinout.png
+esphome:
+  platform: nrf52
+  board: xiao_ble
+hardware:
+  flash_size: 1MB
+  ram_size: 262144
+  cpu_frequency: 64MHz
+  connectivity:
+  - bluetooth
+  - thread
+tags:
+- compact
+- usb-c
+- rgb-led
+- battery
+docs_url: https://esphome.io/components/nrf52.html
+product_url: https://www.seeedstudio.com/Seeed-XIAO-BLE-nRF52840-p-5201.html
+pins:
+- gpio: 2
+  label: P0.2
+  features:
+  - adc
+  - pwm
+  available: true
+  notes: D0 / A0
+- gpio: 3
+  label: P0.3
+  features:
+  - adc
+  - pwm
+  available: true
+  notes: D1 / A1
+- gpio: 28
+  label: P0.28
+  features:
+  - adc
+  - pwm
+  available: true
+  notes: D2 / A2
+- gpio: 29
+  label: P0.29
+  features:
+  - adc
+  - pwm
+  available: true
+  notes: D3 / A3
+- gpio: 4
+  label: P0.4
+  features:
+  - adc
+  - pwm
+  - i2c_sda
+  available: true
+  notes: D4 / A4, default I2C SDA
+- gpio: 5
+  label: P0.5
+  features:
+  - adc
+  - pwm
+  - i2c_scl
+  available: true
+  notes: D5 / A5, default I2C SCL
+- gpio: 43
+  label: P1.11
+  features:
+  - pwm
+  - uart_tx
+  available: true
+  notes: D6, default UART TX
+- gpio: 44
+  label: P1.12
+  features:
+  - pwm
+  - uart_rx
+  available: true
+  notes: D7, default UART RX
+- gpio: 45
+  label: P1.13
+  features:
+  - pwm
+  - spi_clk
+  available: true
+  notes: D8, default SPI SCK
+- gpio: 46
+  label: P1.14
+  features:
+  - pwm
+  - spi_miso
+  available: true
+  notes: D9, default SPI MISO
+- gpio: 47
+  label: P1.15
+  features:
+  - pwm
+  - spi_mosi
+  available: true
+  notes: D10, default SPI MOSI
+- gpio: 9
+  label: P0.9
+  features:
+  - pwm
+  available: true
+  notes: NFC1 pad on the back
+- gpio: 10
+  label: P0.10
+  features:
+  - pwm
+  available: true
+  notes: NFC2 pad on the back
+- gpio: 26
+  label: P0.26
+  features:
+  - rgb_led
+  available: false
+  occupied_by: Built-in LED (red)
+  notes: Active low
+- gpio: 30
+  label: P0.30
+  features:
+  - rgb_led
+  available: false
+  occupied_by: Built-in LED (green)
+  notes: Active low
+- gpio: 6
+  label: P0.6
+  features:
+  - rgb_led
+  available: false
+  occupied_by: Built-in LED (blue)
+  notes: Active low
+- gpio: 31
+  label: P0.31
+  features:
+  - adc
+  available: false
+  occupied_by: Battery voltage divider
+  notes: Battery voltage (AIN7); drive P0.14 low to enable the divider
+- gpio: 14
+  label: P0.14
+  available: false
+  occupied_by: Battery voltage divider enable
+  notes: Drive low to read battery voltage on P0.31
+- gpio: 17
+  label: P0.17
+  available: false
+  occupied_by: Charger status
+  notes: Low while the battery is charging
+- gpio: 13
+  label: P0.13
+  available: false
+  occupied_by: Charge current select
+  notes: Low = 100 mA, high = 50 mA charge current
