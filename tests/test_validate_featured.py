@@ -103,6 +103,44 @@ def test_unknown_field_key(_index: dict | None) -> None:
     assert any("not a config_entry on switch.gpio" in e for e in errors)
 
 
+def test_then_allowed_on_automation_component(_index: dict | None) -> None:
+    """An automation component's ``then:`` preset passes."""
+    errors = _validate_featured(
+        "demo",
+        _board(
+            [
+                {
+                    "id": "blink",
+                    "component_id": "interval",
+                    "fields": {"interval": "1s", "then": [{"light.toggle": "led"}]},
+                }
+            ]
+        ),
+        {},
+        _index,
+    )
+    assert errors == []
+
+
+def test_then_rejected_on_non_automation_component(_index: dict | None) -> None:
+    """``then:`` stays unknown on a component outside the automation category."""
+    errors = _validate_featured(
+        "demo",
+        _board(
+            [
+                {
+                    "id": "relay",
+                    "component_id": "switch.gpio",
+                    "fields": {"then": []},
+                }
+            ]
+        ),
+        _pins(12),
+        _index,
+    )
+    assert any("then: not a config_entry on switch.gpio" in e for e in errors)
+
+
 def test_legacy_led_strip_key_flagged(_index: dict | None) -> None:
     errors = _validate_featured(
         "demo",

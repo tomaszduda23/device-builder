@@ -1052,6 +1052,24 @@ async def test_add_component_featured_keeps_user_typed_id(
     assert "id: main_relay" in response.yaml
 
 
+async def test_add_component_featured_interval_keeps_then(
+    catalog: ComponentCatalog, tmp_path: Any
+) -> None:
+    """A featured ``interval``'s ``then:`` preset lands in the YAML."""
+    (tmp_path / "xiao.yaml").write_text("esphome:\n  name: xiao\n", "utf-8")
+    ctrl = make_add_component_controller(catalog, tmp_path)
+
+    response = await ctrl.add_component(
+        configuration="xiao.yaml",
+        component_id="featured.xiao_ble.rgb_led_demo",
+        fields={},
+    )
+
+    assert "interval:\n" in response.yaml
+    assert "- light.toggle: red_led\n" in response.yaml
+    assert "- light.toggle: blue_led\n" in response.yaml
+
+
 async def test_add_component_featured_unknown_id_raises(
     catalog: ComponentCatalog, tmp_path: Any
 ) -> None:
