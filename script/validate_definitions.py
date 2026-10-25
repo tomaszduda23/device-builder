@@ -833,6 +833,10 @@ def _validate_featured_fields(
             # importer, which injects ``name`` only when the schema declares it.
             if fkey == "id":
                 continue
+            # The catalog carries no action list, so an automation component's
+            # ``then:`` preset (an ``interval`` demo) passes through verbatim.
+            if fkey == "then" and component.get("category") == "automation":
+                continue
             errors.append(f"{path}.fields.{fkey}: not a config_entry on {component_id}")
             continue
         ce = entries_by_key[fkey]
