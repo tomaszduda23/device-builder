@@ -31,39 +31,41 @@ pins:
 - gpio: 0
   label: P0.0
   available: false
-  occupied_by: Crystal
+  occupied_by: 32.768 kHz crystal
 - gpio: 1
   label: P0.1
   available: false
-  occupied_by: Crystal
+  occupied_by: 32.768 kHz crystal
 - gpio: 2
   label: P0.2 (D0)
   features:
   - adc
   available: false
-  occupied_by: Microphone
+  occupied_by: PDM microphone clock
 - gpio: 3
   label: P0.3 (D1)
   features:
   - adc
   available: false
-  occupied_by: Microphone
+  occupied_by: PDM microphone data
 - gpio: 4
   label: P0.4 (D4)
   features:
   - adc
   - i2c_sda
   available: true
+  occupied_by: I2C data bus
 - gpio: 5
   label: P0.5 (D5)
   features:
   - adc
   - i2c_scl
   available: true
+  occupied_by: I2C clock bus
 - gpio: 6
   label: P0.6
   available: true
-  occupied_by: LED
+  occupied_by: User LED (blue)
 - gpio: 7
   label: P0.7
   available: false
@@ -73,11 +75,11 @@ pins:
 - gpio: 9
   label: P0.9 (D14)
   available: true
-  occupied_by: IMU
+  occupied_by: IMU motion interrupt
 - gpio: 10
   label: P0.10 (U2)
   available: true
-  occupied_by: Button
+  occupied_by: Physical button 2
 - gpio: 11
   label: P0.11
   available: false
@@ -87,11 +89,11 @@ pins:
 - gpio: 13
   label: P0.13
   available: false
-  occupied_by: Charger
+  occupied_by: Charge current select
 - gpio: 14
   label: P0.14
   available: true
-  occupied_by: Battery sense
+  occupied_by: Battery voltage divider enable
 - gpio: 15
   label: P0.15 (D11)
   available: true
@@ -101,7 +103,7 @@ pins:
 - gpio: 17
   label: P0.17
   available: true
-  occupied_by: Charger
+  occupied_by: Charging status
 - gpio: 18
   label: P0.18
   available: false
@@ -112,31 +114,31 @@ pins:
 - gpio: 20
   label: P0.20
   available: false
-  occupied_by: Flash
+  occupied_by: QSPI flash
 - gpio: 21
   label: P0.21
   available: false
-  occupied_by: Flash
+  occupied_by: QSPI flash
 - gpio: 22
   label: P0.22
   available: false
-  occupied_by: Flash
+  occupied_by: QSPI flash
 - gpio: 23
   label: P0.23
   available: false
-  occupied_by: Flash
+  occupied_by: QSPI flash
 - gpio: 24
   label: P0.24
   available: false
-  occupied_by: Flash
+  occupied_by: QSPI flash
 - gpio: 25
   label: P0.25
   available: false
-  occupied_by: Flash
+  occupied_by: QSPI flash
 - gpio: 26
   label: P0.26
   available: true
-  occupied_by: LED
+  occupied_by: User LED (red)
 - gpio: 27
   label: P0.27
   available: false
@@ -146,23 +148,23 @@ pins:
   - adc
   - spi_cs
   available: false
-  occupied_by: LCD
+  occupied_by: Screen chip select signal
 - gpio: 29
   label: P0.29 (D3)
   features:
   - adc
   available: false
-  occupied_by: LCD
+  occupied_by: Screen data/command switch
 - gpio: 30
   label: P0.30
   available: true
-  occupied_by: LED
+  occupied_by: User LED (green)
 - gpio: 31
   label: P0.31 (D16)
   features:
   - adc
   available: true
-  occupied_by: Battery sense
+  occupied_by: Battery voltage
 - gpio: 32
   label: P1.0
   available: false
@@ -175,7 +177,7 @@ pins:
 - gpio: 35
   label: P1.3 (U1)
   available: true
-  occupied_by: Button
+  occupied_by: Physical button 1
 - gpio: 36
   label: P1.4
   available: false
@@ -184,14 +186,14 @@ pins:
   features:
   - pwm
   available: true
-  occupied_by: Backlight
+  occupied_by: Screen backlight control
 - gpio: 38
   label: P1.6
   available: false
 - gpio: 39
   label: P1.7 (D17)
   available: false
-  occupied_by: LCD
+  occupied_by: Screen reset signal
 - gpio: 40
   label: P1.8
   available: false
@@ -204,28 +206,29 @@ pins:
 - gpio: 43
   label: P1.11 (D6)
   available: false
-  occupied_by: MicroSD
+  occupied_by: SD card chip select signal
 - gpio: 44
   label: P1.12 (D7)
   available: true
+  occupied_by: Touch interrupt signal
 - gpio: 45
   label: P1.13 (D8)
   features:
   - spi_clk
   available: false
-  occupied_by: LCD / MicroSD
+  occupied_by: Hardware SPI clock
 - gpio: 46
   label: P1.14 (D9)
   features:
   - spi_miso
   available: false
-  occupied_by: MicroSD
+  occupied_by: Hardware SPI data input
 - gpio: 47
   label: P1.15 (D10)
   features:
   - spi_mosi
   available: false
-  occupied_by: LCD / MicroSD
+  occupied_by: Hardware SPI data output
 
 featured_components:
 - id: i2c_bus
