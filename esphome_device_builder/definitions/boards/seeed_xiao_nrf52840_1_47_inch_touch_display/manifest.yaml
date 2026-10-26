@@ -40,13 +40,13 @@ pins:
   label: P0.2 (D0)
   features:
   - adc
-  available: true
+  available: false
   occupied_by: PDM microphone (CLK)
 - gpio: 3
   label: P0.3 (D1)
   features:
   - adc
-  available: true
+  available: false
   occupied_by: PDM microphone (DATA)
 - gpio: 4
   label: P0.4 (D4)
@@ -159,13 +159,13 @@ pins:
   features:
   - adc
   - spi_cs
-  available: true
+  available: false
   occupied_by: LCD (CS)
 - gpio: 29
   label: P0.29 (D3)
   features:
   - adc
-  available: true
+  available: false
   occupied_by: LCD (DC)
 - gpio: 30
   label: P0.30
@@ -210,7 +210,7 @@ pins:
   notes: Not broken out
 - gpio: 39
   label: P1.7 (D17)
-  available: true
+  available: false
   occupied_by: LCD (RST)
 - gpio: 40
   label: P1.8
@@ -226,7 +226,7 @@ pins:
   notes: Not broken out
 - gpio: 43
   label: P1.11 (D6)
-  available: true
+  available: false
   occupied_by: MicroSD (CS)
 - gpio: 44
   label: P1.12 (D7)
@@ -236,19 +236,19 @@ pins:
   label: P1.13 (D8)
   features:
   - spi_clk
-  available: true
+  available: false
   occupied_by: LCD / MicroSD (SCK)
 - gpio: 46
   label: P1.14 (D9)
   features:
   - spi_miso
-  available: true
+  available: false
   occupied_by: MicroSD (MISO)
 - gpio: 47
   label: P1.15 (D10)
   features:
   - spi_mosi
-  available: true
+  available: false
   occupied_by: LCD / MicroSD (MOSI)
 
 featured_components:
