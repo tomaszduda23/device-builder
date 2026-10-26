@@ -40,14 +40,14 @@ pins:
   label: P0.2
   features:
   - adc
-  available: false
+  available: true
   occupied_by: PDM microphone (CLK)
   notes: D0
 - gpio: 3
   label: P0.3
   features:
   - adc
-  available: false
+  available: true
   occupied_by: PDM microphone (DATA)
   notes: D1
 - gpio: 4
@@ -66,7 +66,7 @@ pins:
   notes: D5 — Shared I2C bus (IMU, touch); exposed on the I2C expansion pads
 - gpio: 6
   label: P0.6
-  available: false
+  available: true
   occupied_by: User LED (blue)
 - gpio: 7
   label: P0.7
@@ -78,12 +78,12 @@ pins:
   notes: Not broken out
 - gpio: 9
   label: P0.9
-  available: false
+  available: true
   occupied_by: IMU (INT1)
   notes: D14 — NFC1 pin, used as GPIO
 - gpio: 10
   label: P0.10
-  available: false
+  available: true
   occupied_by: User button 2 (USR2)
   notes: D15 — NFC2 pin, used as GPIO; active low, needs pull-up
 - gpio: 11
@@ -100,7 +100,7 @@ pins:
   occupied_by: Charge current select (HICHG)
 - gpio: 14
   label: P0.14
-  available: false
+  available: true
   occupied_by: Battery divider enable (READ_BAT)
   notes: Active low; drive LOW to enable the VBAT divider
 - gpio: 15
@@ -113,7 +113,7 @@ pins:
   notes: Not broken out
 - gpio: 17
   label: P0.17
-  available: false
+  available: true
   occupied_by: Charger status (~CHG)
   notes: Active low; LOW while charging
 - gpio: 18
@@ -150,7 +150,7 @@ pins:
   occupied_by: Onboard QSPI flash
 - gpio: 26
   label: P0.26
-  available: false
+  available: true
   occupied_by: User LED (red)
 - gpio: 27
   label: P0.27
@@ -161,25 +161,25 @@ pins:
   features:
   - adc
   - spi_cs
-  available: false
+  available: true
   occupied_by: LCD (CS)
   notes: D2
 - gpio: 29
   label: P0.29
   features:
   - adc
-  available: false
+  available: true
   occupied_by: LCD (DC)
   notes: D3
 - gpio: 30
   label: P0.30
-  available: false
+  available: true
   occupied_by: User LED (green)
 - gpio: 31
   label: P0.31
   features:
   - adc
-  available: false
+  available: true
   occupied_by: Battery voltage divider (VBAT, AIN7)
   notes: D16
 - gpio: 32
@@ -196,7 +196,7 @@ pins:
   notes: Not broken out
 - gpio: 35
   label: P1.3
-  available: false
+  available: true
   occupied_by: User button 1 (USR1)
   notes: D19 — Active low, needs pull-up
 - gpio: 36
@@ -207,7 +207,7 @@ pins:
   label: P1.5
   features:
   - pwm
-  available: false
+  available: true
   occupied_by: LCD backlight
   notes: D18
 - gpio: 38
@@ -216,7 +216,7 @@ pins:
   notes: Not broken out
 - gpio: 39
   label: P1.7
-  available: false
+  available: true
   occupied_by: LCD (RST)
   notes: D17
 - gpio: 40
@@ -233,33 +233,33 @@ pins:
   notes: Not broken out
 - gpio: 43
   label: P1.11
-  available: false
+  available: true
   occupied_by: MicroSD (CS)
   notes: D6
 - gpio: 44
   label: P1.12
-  available: false
+  available: true
   occupied_by: Touch controller (INT)
   notes: D7
 - gpio: 45
   label: P1.13
   features:
   - spi_clk
-  available: false
+  available: true
   occupied_by: LCD / MicroSD (SCK)
   notes: D8
 - gpio: 46
   label: P1.14
   features:
   - spi_miso
-  available: false
+  available: true
   occupied_by: MicroSD (MISO)
   notes: D9
 - gpio: 47
   label: P1.15
   features:
   - spi_mosi
-  available: false
+  available: true
   occupied_by: LCD / MicroSD (MOSI)
   notes: D10
 featured_components:
