@@ -208,7 +208,6 @@ pins:
 - gpio: 44
   label: P1.12 (D7)
   available: true
-  occupied_by: Touch
 - gpio: 45
   label: P1.13 (D8)
   features:
