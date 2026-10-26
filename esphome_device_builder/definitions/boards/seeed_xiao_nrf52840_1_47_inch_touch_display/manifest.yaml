@@ -259,7 +259,7 @@ featured_components:
   name: Display Backlight Output
   fields:
     pin:
-      value: 37
+      value: P1.5
       locked: true
     id: backlight_output
 - id: display_backlight
@@ -278,7 +278,7 @@ featured_components:
   fields:
     pin:
       value:
-        number: 35
+        number: P1.3
         mode:
           input: true
           pullup: true
@@ -292,7 +292,7 @@ featured_components:
   fields:
     pin:
       value:
-        number: 10
+        number: P0.10
         mode:
           input: true
           pullup: true
