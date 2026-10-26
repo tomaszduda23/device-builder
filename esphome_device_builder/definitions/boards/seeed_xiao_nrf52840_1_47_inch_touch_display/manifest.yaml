@@ -312,9 +312,3 @@ featured_components:
       locked: true
     name: Battery Charging
     device_class: battery_charging
-featured_bundles:
-- id: backlight_setup
-  name: Display Backlight (full setup)
-  component_ids:
-  - backlight_output
-  - display_backlight
