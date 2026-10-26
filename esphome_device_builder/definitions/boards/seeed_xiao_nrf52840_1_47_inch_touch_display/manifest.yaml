@@ -80,10 +80,10 @@ pins:
   occupied_by: IMU (INT1)
   notes: NFC1 pin, used as GPIO
 - gpio: 10
-  label: P0.10 (D15)
+  label: P0.10 (U2)
   available: true
   occupied_by: User button 2 (USR2)
-  notes: Exposed on the U2 pad; NFC2 pin, used as GPIO; active low, needs pull-up
+  notes: XIAO D15; NFC2 pin, used as GPIO; active low, needs pull-up
 - gpio: 11
   label: P0.11
   available: false
@@ -190,10 +190,10 @@ pins:
   available: false
   notes: Not broken out
 - gpio: 35
-  label: P1.3 (D19)
+  label: P1.3 (U1)
   available: true
   occupied_by: User button 1 (USR1)
-  notes: Exposed on the U1 pad; active low, needs pull-up
+  notes: XIAO D19; active low, needs pull-up
 - gpio: 36
   label: P1.4
   available: false
