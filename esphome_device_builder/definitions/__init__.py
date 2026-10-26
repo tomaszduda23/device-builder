@@ -30,7 +30,7 @@ import orjson
 import yaml
 
 from ..constants import IMPORT_SOURCE_TYPES
-from ..helpers.chips import normalize_chip_variant
+from ..helpers.chips import normalize_chip_variant, parse_manifest_gpio
 from ..helpers.lazy_catalog import (
     is_external_image_url,
     is_unsafe_catalog_id,
@@ -174,7 +174,7 @@ def _parse_connectivity(raw: list[str], board_id: str) -> list[Connectivity]:
 
 def _load_pin(data: dict, board_id: str) -> BoardPin:
     """Load a BoardPin from a dict."""
-    gpio = data["gpio"]
+    gpio = parse_manifest_gpio(data["gpio"])
     return BoardPin(
         gpio=gpio,
         label=data.get("label", f"GPIO{gpio}"),
