@@ -83,7 +83,7 @@ pins:
   label: P0.10 (D15)
   available: true
   occupied_by: User button 2 (USR2)
-  notes: NFC2 pin, used as GPIO; active low, needs pull-up
+  notes: Exposed on the U2 pad; NFC2 pin, used as GPIO; active low, needs pull-up
 - gpio: 11
   label: P0.11
   available: false
@@ -193,7 +193,7 @@ pins:
   label: P1.3 (D19)
   available: true
   occupied_by: User button 1 (USR1)
-  notes: Active low, needs pull-up
+  notes: Exposed on the U1 pad; active low, needs pull-up
 - gpio: 36
   label: P1.4
   available: false
