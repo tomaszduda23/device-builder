@@ -37,10 +37,7 @@ from esphome_device_builder.constants import (  # noqa: E402
     FEATURED_EXCLUDED_CATEGORIES,
 )
 from esphome_device_builder.helpers.channel_colors import CHANNEL_COLORS_LEGACY_KEYS  # noqa: E402
-from esphome_device_builder.helpers.chips import (  # noqa: E402
-    normalize_chip_variant,
-    parse_manifest_gpio,
-)
+from esphome_device_builder.helpers.chips import normalize_chip_variant  # noqa: E402
 from esphome_device_builder.helpers.lazy_catalog import (  # noqa: E402
     is_external_image_url,
     is_unsafe_manifest_path,
@@ -227,8 +224,17 @@ def validate_board(
     if data.get("id") and data["id"] != board_id:
         errors.append(f"{board_id}: id '{data['id']}' does not match folder name")
 
-    pins_by_gpio, pin_errors = _index_pins(board_id, data)
-    errors.extend(pin_errors)
+    # Duplicate GPIO check (schema can't do cross-item uniqueness)
+    pins = data.get("pins", [])
+    pins_by_gpio: dict[int, dict] = {}
+    if isinstance(pins, list):
+        seen_gpios: set[int] = set()
+        for pin in pins:
+            if isinstance(pin, dict) and (gpio := pin.get("gpio")) is not None:
+                if gpio in seen_gpios:
+                    errors.append(f"{board_id}: duplicate gpio {gpio}")
+                seen_gpios.add(gpio)
+                pins_by_gpio[gpio] = pin
 
     errors.extend(_validate_variant_vocabulary(board_id, data))
 
@@ -900,31 +906,6 @@ def _validate_field_preset(
                     f"pin features {sorted(missing)}"
                 )
     return errors
-
-
-def _index_pins(board_id: str, data: dict) -> tuple[dict[int, dict], list[str]]:
-    """Map each declared pin by GPIO number; report bad, misplaced and duplicate ``gpio`` keys."""
-    errors: list[str] = []
-    pins_by_gpio: dict[int, dict] = {}
-    pins = data.get("pins", [])
-    if not isinstance(pins, list):
-        return pins_by_gpio, errors
-    platform = (data.get("esphome") or {}).get("platform")
-    for pin in pins:
-        if not isinstance(pin, dict) or (raw_gpio := pin.get("gpio")) is None:
-            continue
-        try:
-            gpio = parse_manifest_gpio(raw_gpio)
-        except ValueError as exc:
-            errors.append(f"{board_id}: {exc}")
-            continue
-        if isinstance(raw_gpio, str) and platform != "nrf52":
-            errors.append(f"{board_id}: gpio {raw_gpio!r} — port.pin form is nrf52-only")
-        # Duplicate check: the schema can't do cross-item uniqueness.
-        if gpio in pins_by_gpio:
-            errors.append(f"{board_id}: duplicate gpio {gpio}")
-        pins_by_gpio[gpio] = pin
-    return pins_by_gpio, errors
 
 
 def _extract_gpio(raw: object) -> int | None:

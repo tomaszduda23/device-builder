@@ -201,11 +201,9 @@
       "additionalProperties": false,
       "properties": {
         "gpio": {
-          "description": "GPIO number, or nRF52 port.pin (P0.2, P1.7).",
-          "oneOf": [
-            {"type": "integer", "minimum": 0},
-            {"type": "string", "pattern": "^P[01]\\.([0-9]|[12][0-9]|3[01])$"}
-          ]
+          "type": "integer",
+          "description": "GPIO number.",
+          "minimum": 0
         },
         "label": {
           "type": "string",

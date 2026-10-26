@@ -28,135 +28,135 @@ tags:
 docs_url: https://esphome.io/components/nrf52.html
 product_url: https://www.seeedstudio.com/1-47-Inch-Touch-Display-Powered-by-XIAO-nRF52840-Plus-p-6995.html
 pins:
-- gpio: P0.0
+- gpio: 0
   label: P0.0
   available: false
   occupied_by: 32.768 kHz crystal (XL1)
-- gpio: P0.1
+- gpio: 1
   label: P0.1
   available: false
   occupied_by: 32.768 kHz crystal (XL2)
-- gpio: P0.2
+- gpio: 2
   label: P0.2
   features:
   - adc
   available: false
   occupied_by: PDM microphone (CLK)
   notes: D0
-- gpio: P0.3
+- gpio: 3
   label: P0.3
   features:
   - adc
   available: false
   occupied_by: PDM microphone (DATA)
   notes: D1
-- gpio: P0.4
+- gpio: 4
   label: P0.4
   features:
   - adc
   - i2c_sda
   available: true
   notes: D4 — Shared I2C bus (IMU, touch); exposed on the I2C expansion pads
-- gpio: P0.5
+- gpio: 5
   label: P0.5
   features:
   - adc
   - i2c_scl
   available: true
   notes: D5 — Shared I2C bus (IMU, touch); exposed on the I2C expansion pads
-- gpio: P0.6
+- gpio: 6
   label: P0.6
   available: false
   occupied_by: User LED (blue)
-- gpio: P0.7
+- gpio: 7
   label: P0.7
   available: false
   notes: Not broken out
-- gpio: P0.8
+- gpio: 8
   label: P0.8
   available: false
   notes: Not broken out
-- gpio: P0.9
+- gpio: 9
   label: P0.9
   available: false
   occupied_by: IMU (INT1)
   notes: D14 — NFC1 pin, used as GPIO
-- gpio: P0.10
+- gpio: 10
   label: P0.10
   available: false
   occupied_by: User button 2 (USR2)
   notes: D15 — NFC2 pin, used as GPIO; active low, needs pull-up
-- gpio: P0.11
+- gpio: 11
   label: P0.11
   available: false
   notes: Not broken out
-- gpio: P0.12
+- gpio: 12
   label: P0.12
   available: false
   notes: Not broken out
-- gpio: P0.13
+- gpio: 13
   label: P0.13
   available: false
   occupied_by: Charge current select (HICHG)
-- gpio: P0.14
+- gpio: 14
   label: P0.14
   available: false
   occupied_by: Battery divider enable (READ_BAT)
   notes: Active low; drive LOW to enable the VBAT divider
-- gpio: P0.15
+- gpio: 15
   label: P0.15
   available: true
   notes: D11 — I2S SD; exposed on the bottom pad group
-- gpio: P0.16
+- gpio: 16
   label: P0.16
   available: false
   notes: Not broken out
-- gpio: P0.17
+- gpio: 17
   label: P0.17
   available: false
   occupied_by: Charger status (~CHG)
   notes: Active low; LOW while charging
-- gpio: P0.18
+- gpio: 18
   label: P0.18
   available: false
   occupied_by: Reset
-- gpio: P0.19
+- gpio: 19
   label: P0.19
   available: true
   notes: D12 — I2S SCK; exposed on the bottom pad group
-- gpio: P0.20
+- gpio: 20
   label: P0.20
   available: false
   occupied_by: Onboard QSPI flash
-- gpio: P0.21
+- gpio: 21
   label: P0.21
   available: false
   occupied_by: Onboard QSPI flash
-- gpio: P0.22
+- gpio: 22
   label: P0.22
   available: false
   occupied_by: Onboard QSPI flash
-- gpio: P0.23
+- gpio: 23
   label: P0.23
   available: false
   occupied_by: Onboard QSPI flash
-- gpio: P0.24
+- gpio: 24
   label: P0.24
   available: false
   occupied_by: Onboard QSPI flash
-- gpio: P0.25
+- gpio: 25
   label: P0.25
   available: false
   occupied_by: Onboard QSPI flash
-- gpio: P0.26
+- gpio: 26
   label: P0.26
   available: false
   occupied_by: User LED (red)
-- gpio: P0.27
+- gpio: 27
   label: P0.27
   available: false
   notes: Not broken out
-- gpio: P0.28
+- gpio: 28
   label: P0.28
   features:
   - adc
@@ -164,98 +164,98 @@ pins:
   available: false
   occupied_by: LCD (CS)
   notes: D2
-- gpio: P0.29
+- gpio: 29
   label: P0.29
   features:
   - adc
   available: false
   occupied_by: LCD (DC)
   notes: D3
-- gpio: P0.30
+- gpio: 30
   label: P0.30
   available: false
   occupied_by: User LED (green)
-- gpio: P0.31
+- gpio: 31
   label: P0.31
   features:
   - adc
   available: false
   occupied_by: Battery voltage divider (VBAT, AIN7)
   notes: D16
-- gpio: P1.0
+- gpio: 32
   label: P1.0
   available: false
   notes: Not broken out
-- gpio: P1.1
+- gpio: 33
   label: P1.1
   available: true
   notes: D13 — I2S WS; exposed on the bottom pad group
-- gpio: P1.2
+- gpio: 34
   label: P1.2
   available: false
   notes: Not broken out
-- gpio: P1.3
+- gpio: 35
   label: P1.3
   available: false
   occupied_by: User button 1 (USR1)
   notes: D19 — Active low, needs pull-up
-- gpio: P1.4
+- gpio: 36
   label: P1.4
   available: false
   notes: Not broken out
-- gpio: P1.5
+- gpio: 37
   label: P1.5
   features:
   - pwm
   available: false
   occupied_by: LCD backlight
   notes: D18
-- gpio: P1.6
+- gpio: 38
   label: P1.6
   available: false
   notes: Not broken out
-- gpio: P1.7
+- gpio: 39
   label: P1.7
   available: false
   occupied_by: LCD (RST)
   notes: D17
-- gpio: P1.8
+- gpio: 40
   label: P1.8
   available: false
   notes: Not broken out
-- gpio: P1.9
+- gpio: 41
   label: P1.9
   available: false
   notes: Not broken out
-- gpio: P1.10
+- gpio: 42
   label: P1.10
   available: false
   notes: Not broken out
-- gpio: P1.11
+- gpio: 43
   label: P1.11
   available: false
   occupied_by: MicroSD (CS)
   notes: D6
-- gpio: P1.12
+- gpio: 44
   label: P1.12
   available: false
   occupied_by: Touch controller (INT)
   notes: D7
-- gpio: P1.13
+- gpio: 45
   label: P1.13
   features:
   - spi_clk
   available: false
   occupied_by: LCD / MicroSD (SCK)
   notes: D8
-- gpio: P1.14
+- gpio: 46
   label: P1.14
   features:
   - spi_miso
   available: false
   occupied_by: MicroSD (MISO)
   notes: D9
-- gpio: P1.15
+- gpio: 47
   label: P1.15
   features:
   - spi_mosi

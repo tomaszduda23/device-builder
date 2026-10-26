@@ -214,10 +214,6 @@ pins:
     notes: "Directly connected to BOOT button, directly usable otherwise"
 ```
 
-On nRF52 boards `gpio` may also be written in port.pin form (`gpio: P0.2`,
-`gpio: P1.7`); the sync stores it as the number ESPHome uses
-(`port * 32 + pin`). Featured-component pin values stay numeric.
-
 #### Feature vocabulary
 
 | Feature | Meaning |
