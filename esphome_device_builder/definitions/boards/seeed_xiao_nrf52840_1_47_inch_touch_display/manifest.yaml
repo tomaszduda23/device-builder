@@ -64,7 +64,7 @@ pins:
   occupied_by: I2C clock bus
 - gpio: 6
   label: P0.6
-  available: true
+  available: false
   occupied_by: User LED (blue)
 - gpio: 7
   label: P0.7
@@ -76,11 +76,11 @@ pins:
   label: IMU_INT
   features:
   - input_only
-  available: true
+  available: false
   occupied_by: IMU motion interrupt
 - gpio: 10
   label: U2
-  available: true
+  available: false
   occupied_by: Physical button 2
 - gpio: 11
   label: P0.11
@@ -106,7 +106,7 @@ pins:
   label: CHG
   features:
   - input_only
-  available: true
+  available: false
   occupied_by: Charging status
 - gpio: 18
   label: P0.18
@@ -141,7 +141,7 @@ pins:
   occupied_by: QSPI flash
 - gpio: 26
   label: P0.26
-  available: true
+  available: false
   occupied_by: User LED (red)
 - gpio: 27
   label: P0.27
@@ -161,7 +161,7 @@ pins:
   occupied_by: Screen data/command switch
 - gpio: 30
   label: P0.30
-  available: true
+  available: false
   occupied_by: User LED (green)
 - gpio: 31
   label: VBAT_ADC
@@ -181,7 +181,7 @@ pins:
   available: false
 - gpio: 35
   label: U1
-  available: true
+  available: false
   occupied_by: Physical button 1
 - gpio: 36
   label: P1.4
@@ -190,7 +190,7 @@ pins:
   label: LCD_BL
   features:
   - pwm
-  available: true
+  available: false
   occupied_by: Screen backlight control
 - gpio: 38
   label: P1.6
@@ -216,7 +216,7 @@ pins:
   label: TOUCH_INT
   features:
   - input_only
-  available: true
+  available: false
   occupied_by: Touch interrupt signal
 - gpio: 45
   label: SCK
