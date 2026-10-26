@@ -307,30 +307,3 @@ featured_components:
       locked: true
     name: Button 2
     id: button_2
-- id: battery_read_enable
-  component_id: output.gpio
-  name: Battery Read Enable (READ_BAT)
-  fields:
-    pin:
-      value: P0.14
-      locked: true
-    id:
-      value: battery_read_enable
-      locked: true
-- id: battery_voltage
-  component_id: sensor.adc
-  name: Battery Voltage
-  fields:
-    pin:
-      value: P0.31
-      locked: true
-    name: Battery Voltage
-    id: battery_voltage
-    device_class: voltage
-    unit_of_measurement: V
-    accuracy_decimals: 2
-    update_interval: 60s
-    filters:
-    - multiply: 3.004
-  requires:
-  - battery_read_enable
