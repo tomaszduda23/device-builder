@@ -236,10 +236,10 @@ featured_components:
   name: I2C Bus (IMU / Touch)
   fields:
     sda:
-      value: 4
+      value: P0.4
       locked: true
     scl:
-      value: 5
+      value: P0.5
       locked: true
     id:
       value: i2c_bus
@@ -298,17 +298,3 @@ featured_components:
         inverted: true
       locked: true
     name: Button 2
-- id: charging
-  component_id: binary_sensor.gpio
-  name: Battery Charging
-  fields:
-    pin:
-      value:
-        number: 17
-        mode:
-          input: true
-          pullup: true
-        inverted: true
-      locked: true
-    name: Battery Charging
-    device_class: battery_charging
