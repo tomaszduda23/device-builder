@@ -351,8 +351,3 @@ featured_bundles:
   component_ids:
   - backlight_output
   - display_backlight
-- id: buttons
-  name: User Buttons
-  component_ids:
-  - button_a
-  - button_b
