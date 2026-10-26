@@ -53,14 +53,14 @@ pins:
   features:
   - adc
   - i2c_sda
-  available: true
+  available: false
   occupied_by: I2C data bus
 - gpio: 5
   label: P0.5 (SCL)
   features:
   - adc
   - i2c_scl
-  available: true
+  available: false
   occupied_by: I2C clock bus
 - gpio: 6
   label: P0.6
