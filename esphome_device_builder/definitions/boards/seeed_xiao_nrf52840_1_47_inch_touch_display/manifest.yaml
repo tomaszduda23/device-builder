@@ -74,6 +74,8 @@ pins:
   available: false
 - gpio: 9
   label: P0.9 (IMU_INT)
+  features:
+  - input_only
   available: true
   occupied_by: IMU motion interrupt
 - gpio: 10
@@ -102,6 +104,8 @@ pins:
   available: false
 - gpio: 17
   label: P0.17 (CHG)
+  features:
+  - input_only
   available: true
   occupied_by: Charging status
 - gpio: 18
@@ -209,6 +213,8 @@ pins:
   occupied_by: SD card chip select signal
 - gpio: 44
   label: P1.12 (TOUCH_INT)
+  features:
+  - input_only
   available: true
   occupied_by: Touch interrupt signal
 - gpio: 45
