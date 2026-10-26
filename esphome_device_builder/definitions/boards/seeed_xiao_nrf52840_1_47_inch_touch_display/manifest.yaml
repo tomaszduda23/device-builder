@@ -291,6 +291,7 @@ featured_components:
         inverted: true
       locked: true
     name: Button 1
+    id: button_1
 - id: button_b
   component_id: binary_sensor.gpio
   name: User Button 2 (USR2)
@@ -304,3 +305,4 @@ featured_components:
         inverted: true
       locked: true
     name: Button 2
+    id: button_2
