@@ -10,6 +10,7 @@ import pytest
 
 from script.sync_components import (  # type: ignore[import-not-found]
     _apply_libretiny_family_provides,
+    _apply_target_platform_internal_provides,
     _derive_supported_platforms,
     _expand_libretiny,
     _libretiny_families,
@@ -79,6 +80,27 @@ def test_family_platform_provides_libretiny() -> None:
     assert by_id["rtl87xx"]["provides"] == ["libretiny"]
     assert by_id["ln882x"]["provides"] == ["libretiny"]
     assert by_id["esp32"]["provides"] == []
+
+
+def test_target_platform_provides_uncatalogued_auto_loads() -> None:
+    entries = [
+        {"id": "nrf52"},
+        {"id": "esp32", "provides": []},
+        {"id": "bk72xx", "provides": ["libretiny"]},
+        {"id": "libretiny"},
+        {"id": "preferences"},
+    ]
+    _apply_target_platform_internal_provides(entries)
+    by_id = {e["id"]: e for e in entries}
+    assert by_id["nrf52"]["provides"] == ["zephyr"]
+    assert by_id["esp32"]["provides"] == []
+    assert by_id["bk72xx"]["provides"] == ["libretiny"]
+
+
+def test_catalog_nrf52_provides_zephyr() -> None:
+    """``output.zephyr_pwm`` depends on ``zephyr``, which only the platform block supplies."""
+    assert "zephyr" in _index_by_id()["output.zephyr_pwm"]["dependencies"]
+    assert "zephyr" in _index_by_id()["nrf52"]["provides"]
 
 
 def test_propagate_narrows_through_hub() -> None:
