@@ -37,26 +37,26 @@ pins:
   available: false
   occupied_by: 32.768 kHz crystal
 - gpio: 2
-  label: P0.2 (PDM_CLK)
+  label: PDM_CLK
   features:
   - adc
   available: false
   occupied_by: PDM microphone clock
 - gpio: 3
-  label: P0.3 (MIC_DATA)
+  label: MIC_DATA
   features:
   - adc
   available: false
   occupied_by: PDM microphone data
 - gpio: 4
-  label: P0.4 (SDA)
+  label: SDA
   features:
   - adc
   - i2c_sda
   available: false
   occupied_by: I2C data bus
 - gpio: 5
-  label: P0.5 (SCL)
+  label: SCL
   features:
   - adc
   - i2c_scl
@@ -73,13 +73,13 @@ pins:
   label: P0.8
   available: false
 - gpio: 9
-  label: P0.9 (IMU_INT)
+  label: IMU_INT
   features:
   - input_only
   available: true
   occupied_by: IMU motion interrupt
 - gpio: 10
-  label: P0.10 (U2)
+  label: U2
   available: true
   occupied_by: Physical button 2
 - gpio: 11
@@ -93,17 +93,17 @@ pins:
   available: false
   occupied_by: Charge current select
 - gpio: 14
-  label: P0.14 (READ_BAT)
-  available: true
+  label: READ_BAT
+  available: false
   occupied_by: Battery voltage divider enable
 - gpio: 15
-  label: P0.15 (D11)
+  label: D11
   available: true
 - gpio: 16
   label: P0.16
   available: false
 - gpio: 17
-  label: P0.17 (CHG)
+  label: CHG
   features:
   - input_only
   available: true
@@ -113,7 +113,7 @@ pins:
   available: false
   occupied_by: Reset
 - gpio: 19
-  label: P0.19 (D12)
+  label: D12
   available: true
 - gpio: 20
   label: P0.20
@@ -147,14 +147,14 @@ pins:
   label: P0.27
   available: false
 - gpio: 28
-  label: P0.28 (LCD_CS)
+  label: LCD_CS
   features:
   - adc
   - spi_cs
   available: false
   occupied_by: Screen chip select signal
 - gpio: 29
-  label: P0.29 (LCD_DC)
+  label: LCD_DC
   features:
   - adc
   available: false
@@ -164,30 +164,30 @@ pins:
   available: true
   occupied_by: User LED (green)
 - gpio: 31
-  label: P0.31 (VBAT_ADC)
+  label: VBAT_ADC
   features:
   - adc
   - input_only
-  available: true
+  available: false
   occupied_by: Battery voltage
 - gpio: 32
   label: P1.0
   available: false
 - gpio: 33
-  label: P1.1 (D13)
+  label: D13
   available: true
 - gpio: 34
   label: P1.2
   available: false
 - gpio: 35
-  label: P1.3 (U1)
+  label: U1
   available: true
   occupied_by: Physical button 1
 - gpio: 36
   label: P1.4
   available: false
 - gpio: 37
-  label: P1.5 (LCD_BL)
+  label: LCD_BL
   features:
   - pwm
   available: true
@@ -196,7 +196,7 @@ pins:
   label: P1.6
   available: false
 - gpio: 39
-  label: P1.7 (LCD_RST)
+  label: LCD_RST
   available: false
   occupied_by: Screen reset signal
 - gpio: 40
@@ -209,29 +209,29 @@ pins:
   label: P1.10
   available: false
 - gpio: 43
-  label: P1.11 (SD_CS)
+  label: SD_CS
   available: false
   occupied_by: SD card chip select signal
 - gpio: 44
-  label: P1.12 (TOUCH_INT)
+  label: TOUCH_INT
   features:
   - input_only
   available: true
   occupied_by: Touch interrupt signal
 - gpio: 45
-  label: P1.13 (SCK)
+  label: SCK
   features:
   - spi_clk
   available: false
   occupied_by: Hardware SPI clock
 - gpio: 46
-  label: P1.14 (MISO)
+  label: MISO
   features:
   - spi_miso
   available: false
   occupied_by: Hardware SPI data input
 - gpio: 47
-  label: P1.15 (MOSI)
+  label: MOSI
   features:
   - spi_mosi
   available: false
@@ -307,3 +307,30 @@ featured_components:
       locked: true
     name: Button 2
     id: button_2
+- id: battery_read_enable
+  component_id: output.gpio
+  name: Battery Read Enable (READ_BAT)
+  fields:
+    pin:
+      value: P0.14
+      locked: true
+    id:
+      value: battery_read_enable
+      locked: true
+- id: battery_voltage
+  component_id: sensor.adc
+  name: Battery Voltage
+  fields:
+    pin:
+      value: P0.31
+      locked: true
+    name: Battery Voltage
+    id: battery_voltage
+    device_class: voltage
+    unit_of_measurement: V
+    accuracy_decimals: 2
+    update_interval: 60s
+    filters:
+    - multiply: 3.004
+  requires:
+  - battery_read_enable
