@@ -1,0 +1,254 @@
+id: seeed_xiao_nrf52840_1_47_inch_touch_display
+name: Seeed XIAO 1.47" IPS Touch Display (nRF52840)
+description: 1.47" 172x320 IPS touch display powered by the XIAO nRF52840 Plus. Onboard LSM6DS3 6-axis IMU, PDM
+  microphone, MicroSD slot, two user buttons and LiPo charging with battery monitoring. The JD9853A LCD (SPI) and
+  AXS5106L touch controller (I2C 0x63) are not yet supported by ESPHome on nRF52; the backlight, buttons, IMU and
+  charge status are.
+manufacturer: Seeed Studio
+images:
+- https://files.seeedstudio.com/wiki/Display_Gadgets/imgs/NEW147_nRF52840Plus_display_hardware_heroNEW.jpg
+esphome:
+  platform: nrf52
+  board: xiao_ble
+hardware:
+  flash_size: 1MB
+  ram_size: 262144
+  cpu_frequency: 64MHz
+  connectivity:
+  - bluetooth
+tags:
+- compact
+- display
+- usb-c
+- sd-card
+- microphone
+- imu
+- lipo
+- battery
+docs_url: https://esphome.io/components/nrf52.html
+product_url: https://www.seeedstudio.com/1-47-Inch-Touch-Display-Powered-by-XIAO-nRF52840-Plus-p-6995.html
+pins:
+- gpio: 2
+  label: D0 (P0.02)
+  features:
+  - adc
+  available: false
+  occupied_by: PDM microphone (CLK)
+- gpio: 3
+  label: D1 (P0.03)
+  features:
+  - adc
+  available: false
+  occupied_by: PDM microphone (DATA)
+- gpio: 28
+  label: D2 (P0.28)
+  features:
+  - adc
+  - spi_cs
+  available: false
+  occupied_by: LCD (CS)
+- gpio: 29
+  label: D3 (P0.29)
+  features:
+  - adc
+  available: false
+  occupied_by: LCD (DC)
+- gpio: 4
+  label: D4 (P0.04)
+  features:
+  - adc
+  - i2c_sda
+  available: true
+  notes: Shared I2C bus (IMU, touch); exposed on the I2C expansion pads
+- gpio: 5
+  label: D5 (P0.05)
+  features:
+  - adc
+  - i2c_scl
+  available: true
+  notes: Shared I2C bus (IMU, touch); exposed on the I2C expansion pads
+- gpio: 43
+  label: D6 (P1.11)
+  available: false
+  occupied_by: MicroSD (CS)
+- gpio: 44
+  label: D7 (P1.12)
+  available: false
+  occupied_by: Touch controller (INT)
+- gpio: 45
+  label: D8 (P1.13)
+  features:
+  - spi_clk
+  available: false
+  occupied_by: LCD / MicroSD (SCK)
+- gpio: 46
+  label: D9 (P1.14)
+  features:
+  - spi_miso
+  available: false
+  occupied_by: MicroSD (MISO)
+- gpio: 47
+  label: D10 (P1.15)
+  features:
+  - spi_mosi
+  available: false
+  occupied_by: LCD / MicroSD (MOSI)
+- gpio: 15
+  label: D11 (P0.15)
+  available: true
+  notes: I2S SD; exposed on the bottom pad group
+- gpio: 19
+  label: D12 (P0.19)
+  available: true
+  notes: I2S SCK; exposed on the bottom pad group
+- gpio: 33
+  label: D13 (P1.01)
+  available: true
+  notes: I2S WS; exposed on the bottom pad group
+- gpio: 9
+  label: D14 (P0.09)
+  available: false
+  occupied_by: IMU (INT1)
+  notes: NFC1 pin, used as GPIO
+- gpio: 10
+  label: D15 (P0.10)
+  available: false
+  occupied_by: User button 2 (USR2)
+  notes: NFC2 pin, used as GPIO; active low, needs pull-up
+- gpio: 31
+  label: D16 (P0.31)
+  features:
+  - adc
+  available: false
+  occupied_by: Battery voltage divider (VBAT, AIN7)
+- gpio: 39
+  label: D17 (P1.07)
+  available: false
+  occupied_by: LCD (RST)
+- gpio: 37
+  label: D18 (P1.05)
+  features:
+  - pwm
+  available: false
+  occupied_by: LCD backlight
+- gpio: 35
+  label: D19 (P1.03)
+  available: false
+  occupied_by: User button 1 (USR1)
+  notes: Active low, needs pull-up
+- gpio: 14
+  label: P0.14
+  available: false
+  occupied_by: Battery divider enable (READ_BAT)
+  notes: Active low; drive LOW to enable the VBAT divider
+- gpio: 17
+  label: P0.17
+  available: false
+  occupied_by: Charger status (~CHG)
+  notes: Active low; LOW while charging
+- gpio: 26
+  label: P0.26
+  available: false
+  occupied_by: User LED (red)
+- gpio: 30
+  label: P0.30
+  available: false
+  occupied_by: User LED (green)
+- gpio: 6
+  label: P0.06
+  available: false
+  occupied_by: User LED (blue)
+featured_components:
+- id: i2c_bus
+  component_id: i2c
+  name: I2C Bus (IMU / Touch)
+  fields:
+    sda:
+      value: 4
+      locked: true
+    scl:
+      value: 5
+      locked: true
+    id:
+      value: i2c_bus
+      locked: true
+- id: imu
+  component_id: motion.lsm6ds
+  name: LSM6DS3 6-Axis IMU
+  fields:
+    i2c_id:
+      value: i2c_bus
+      locked: true
+    id: imu
+  requires:
+  - i2c_bus
+- id: backlight_output
+  component_id: output.zephyr_pwm
+  name: Display Backlight Output
+  fields:
+    pin:
+      value: 37
+      locked: true
+    id: backlight_output
+- id: display_backlight
+  component_id: light.monochromatic
+  name: Display Backlight
+  fields:
+    name: Display Backlight
+    icon: mdi:brightness-7
+    restore_mode: ALWAYS_ON
+    output: backlight_output
+    id: display_backlight
+  requires:
+  - backlight_output
+- id: button_a
+  component_id: binary_sensor.gpio
+  name: User Button 1 (USR1)
+  fields:
+    pin:
+      value:
+        number: 35
+        mode:
+          input: true
+          pullup: true
+        inverted: true
+      locked: true
+    name: Button 1
+- id: button_b
+  component_id: binary_sensor.gpio
+  name: User Button 2 (USR2)
+  fields:
+    pin:
+      value:
+        number: 10
+        mode:
+          input: true
+          pullup: true
+        inverted: true
+      locked: true
+    name: Button 2
+- id: charging
+  component_id: binary_sensor.gpio
+  name: Battery Charging
+  fields:
+    pin:
+      value:
+        number: 17
+        mode:
+          input: true
+          pullup: true
+        inverted: true
+      locked: true
+    name: Battery Charging
+    device_class: battery_charging
+featured_bundles:
+- id: backlight_setup
+  name: Display Backlight (full setup)
+  component_ids:
+  - backlight_output
+  - display_backlight
+- id: buttons
+  name: User Buttons
+  component_ids:
+  - button_a
+  - button_b
