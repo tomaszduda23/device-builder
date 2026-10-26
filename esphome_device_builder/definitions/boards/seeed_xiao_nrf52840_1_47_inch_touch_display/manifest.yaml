@@ -167,6 +167,7 @@ pins:
   label: P0.31 (VBAT_ADC)
   features:
   - adc
+  - input_only
   available: true
   occupied_by: Battery voltage
 - gpio: 32
