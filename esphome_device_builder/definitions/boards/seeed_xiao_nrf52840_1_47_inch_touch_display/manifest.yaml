@@ -97,7 +97,7 @@ pins:
   available: true
   occupied_by: Battery voltage divider enable
 - gpio: 15
-  label: P0.15 (I2S_SD)
+  label: P0.15 (D11)
   available: true
 - gpio: 16
   label: P0.16
@@ -113,7 +113,7 @@ pins:
   available: false
   occupied_by: Reset
 - gpio: 19
-  label: P0.19 (I2S_SCK)
+  label: P0.19 (D12)
   available: true
 - gpio: 20
   label: P0.20
@@ -173,7 +173,7 @@ pins:
   label: P1.0
   available: false
 - gpio: 33
-  label: P1.1 (I2S_WS)
+  label: P1.1 (D13)
   available: true
 - gpio: 34
   label: P1.2
