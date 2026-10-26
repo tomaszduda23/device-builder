@@ -1385,6 +1385,7 @@ def build_catalog(
     # Reads ``provides_id_paths``, so after the provides pass.
     _resolve_reference_classes(out)
     _apply_libretiny_family_provides(out)
+    _apply_target_platform_internal_provides(out)
     _apply_libretiny_family_options(out)
 
     # After the alias fold and per-entry writers so hub constraints reach
@@ -1913,6 +1914,17 @@ def _apply_libretiny_family_provides(entries: list[dict]) -> None:
     for entry in entries:
         if entry["id"] in families:
             entry["provides"] = sorted({*entry.get("provides", ()), "libretiny"})
+
+
+def _apply_target_platform_internal_provides(entries: list[dict]) -> None:
+    """Make a target platform ``provides`` its uncatalogued ``AUTO_LOAD``s (``nrf52`` → ``zephyr``)."""
+    catalogued = {entry["id"] for entry in entries}
+    for entry in entries:
+        if not introspect_component(entry["id"]).get("is_target_platform"):
+            continue
+        internal = _auto_load_closure(entry["id"]) - catalogued
+        if internal:
+            entry["provides"] = sorted({*entry.get("provides", ()), *internal})
 
 
 def _apply_libretiny_family_options(entries: list[dict]) -> None:
