@@ -1,7 +1,7 @@
 id: seeed_xiao_nrf52840_1_47_inch_touch_display
 name: Seeed XIAO 1.47" IPS Touch Display (nRF52840)
-description: XIAO nRF52840 Plus with a 1.47" display board. Onboard LSM6DS3 6-axis IMU, display backlight, two
-  user buttons and LiPo charging.
+description: XIAO nRF52840 Plus with a 1.47" display board. Onboard LSM6DS3 6-axis IMU, display backlight and two
+  user buttons.
 manufacturer: Seeed Studio
 images:
 - https://files.seeedstudio.com/wiki/Display_Gadgets/imgs/NEW147_nRF52840Plus_display_hardware_heroNEW.jpg
@@ -18,8 +18,6 @@ tags:
 - compact
 - usb-c
 - imu
-- lipo
-- battery
 docs_url: https://esphome.io/components/nrf52.html
 product_url: https://www.seeedstudio.com/1-47-Inch-Touch-Display-Powered-by-XIAO-nRF52840-Plus-p-6995.html
 pins:
